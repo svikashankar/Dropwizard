@@ -1,0 +1,17 @@
+com/vcexchange/service/IBookService.class
+com/vcexchange/dummyApisApplication.class
+com/vcexchange/entity/Book.class
+com/vcexchange/persistence/BookRepo.class
+com/vcexchange/persistence/AuthRepo.class
+com/vcexchange/dummyApisConfiguration.class
+com/vcexchange/service/LaptopService.class
+com/vcexchange/auth/AuthenticateFilter.class
+com/vcexchange/persistence/IBookRepo.class
+com/vcexchange/auth/Authenticator.class
+com/vcexchange/service/ILaptopService.class
+com/vcexchange/persistence/LaptopRepo.class
+com/vcexchange/resources/LaptopResource.class
+com/vcexchange/entity/Laptop.class
+com/vcexchange/service/BookService.class
+com/vcexchange/persistence/ILaptopRepo.class
+com/vcexchange/resources/BookResource.class
