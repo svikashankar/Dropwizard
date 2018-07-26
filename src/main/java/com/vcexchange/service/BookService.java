@@ -1,3 +1,4 @@
+//WE WRITE THE LOGICS
 package com.vcexchange.service;
 
 import com.vcexchange.entity.Book;
@@ -26,4 +27,13 @@ public class BookService implements IBookService {
     public String removeBooks(String isbn){
         return bookRepo.removeBooks(isbn);
     }
+
+    public void addBook(Book book){
+        bookRepo.addBook(book);
+    }
+
+    public String updateBook(Book book){
+       return bookRepo.updateBook(book);
+    }
+
 }

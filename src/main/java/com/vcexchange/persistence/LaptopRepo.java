@@ -33,4 +33,9 @@ public class LaptopRepo implements ILaptopRepo {
         }
         return "failure";
     }
+
+
+    public  void addLaptop(Laptop laptop){
+        this.laptop.add(laptop);
+    }
 }

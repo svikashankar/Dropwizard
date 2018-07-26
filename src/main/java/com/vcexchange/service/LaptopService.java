@@ -1,3 +1,4 @@
+
 package com.vcexchange.service;
 
 import com.vcexchange.entity.Laptop;
@@ -20,5 +21,10 @@ public class LaptopService implements ILaptopService {
         public String removeLaptop(String customerid){
             return laptopRepo.removeLaptop(customerid);
         }
+
+        public void addLaptop(Laptop laptop){
+        laptopRepo.addLaptop(laptop);
+        }
+
     }
 

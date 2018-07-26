@@ -8,4 +8,6 @@ public interface ILaptopService  {
     List<Laptop> getAll();
     String removeLaptop(String customerid);
 
+
+    void addLaptop(Laptop laptop);
 }

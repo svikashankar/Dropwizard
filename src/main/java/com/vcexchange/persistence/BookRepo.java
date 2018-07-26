@@ -1,3 +1,4 @@
+//******** UPDATE DELETE POST PUT
 package com.vcexchange.persistence;
 
 import com.vcexchange.entity.Book;
@@ -7,12 +8,13 @@ import java.util.List;
 
 public class BookRepo implements IBookRepo {
 
-    private List<Book> books = setBooks();
+//    TO GET ALL THE BOOK LIST
+    private List<Book> books = setBooks(); //BOOK isbn and title WILL BE STORED IN books
 
     public List<Book> getAll() {
-        return books;
+        return books;//ALL THE BOOK NAMES WILL BE RETURNED FROM HERE
     }
-
+//Data WHICH IS STORED
     private List<Book> setBooks(){
         List<Book> sach = new ArrayList();
         sach.add(new Book("1492251275", "The Purloined Letter"));
@@ -23,15 +25,19 @@ public class BookRepo implements IBookRepo {
         return sach;
     }
 
+
+//    TO GET ONE INFORMATION
     public Book getOne(String isbn){
+        //ENHANCED LOOP
         for(Book book: books){
-            if(book.getIsbn().equals(isbn))
+            if(book.getIsbn().equals(isbn))// isbn== param isbn then it returns the value
             return book;
         }
-        throw new NullPointerException("Can't find the book");
+        return null;
 //return "failure";
     }
 
+//    DELETE
     public String removeBooks(String isbn){
 //objecttype variable:
 //       Enhanced loop
@@ -42,4 +48,22 @@ public class BookRepo implements IBookRepo {
         }
         return "failure";
     }
+//Post wont returns ANYTHING SO IT MUST BE VOID
+    public void addBook(Book book){
+        books.add(book);
+    }
+
+    //PUT
+  public String updateBook(Book input){
+//        ENHANCED LOOP
+        for(Book book:books){
+            if(book.getIsbn().equals(input.getIsbn()))//ISBN == Param isbn then it updates the titlde
+            {
+                book.setTitle(input.getTitle());
+                return "succeed";
+            }
+        }
+        return "failure";
+  }
+
 }

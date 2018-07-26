@@ -1,9 +1,8 @@
-//A Dropwizard Environment consists of all the Resources
+//A Dropwizard Environment consists of all the Resources IT STARTS FROM HERE
 package com.vcexchange.resources;
 
 import com.codahale.metrics.annotation.Timed;
 import com.vcexchange.entity.Book;
-import com.vcexchange.persistence.BookRepo;
 import com.vcexchange.service.IBookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,12 +37,14 @@ public class BookResource {
    public Book getBook(@PathParam("isbn") String isbn) {
         return bookService.getOne(isbn);
     }
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void createBook(Book book) {
-        logger.info("Enters createBook() {} > {}", book.getIsbn(), book.getTitle());
-    }
 
+
+//    @POST
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public void createBook(Book book) {
+//        logger.info("Enters createBook() {} > {}", book.getIsbn(), book.getTitle());
+//    }
+//***********DELETE
     @DELETE
     @Path("/{isbn}")
     public Response removeBooks(@PathParam("isbn") String isbn) {
@@ -53,4 +54,27 @@ public class BookResource {
         } else
             return Response.status(Status.NOT_FOUND).build();
     }
+
+//    **********DELETE
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createBook(Book book) {
+        if (bookService.getOne(book.getIsbn())!= null){
+            return Response.status(Status.NOT_FOUND).build();
+        }
+        else bookService.addBook(book);
+        return Response.ok().build();
+    }
+//***********UPDATE
+    @POST
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateBook(Book book) {
+       String stat = bookService.updateBook(book);
+        if (stat.equals("succeed")) {
+            return Response.ok().build();
+        }
+        else
+            return Response.status(Status.NOT_FOUND).build();
+        }
 }

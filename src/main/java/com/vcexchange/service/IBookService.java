@@ -11,4 +11,8 @@ public interface IBookService {
     Book getOne(String isbn);
 
     String removeBooks(String isbn);
+
+    void addBook(Book book);
+
+    String updateBook(Book book);
 }

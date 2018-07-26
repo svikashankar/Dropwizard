@@ -9,6 +9,8 @@ import com.vcexchange.entity.Laptop;
 import com.vcexchange.service.ILaptopService;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+//import javax.xml.ws.Response;
+
 import com.vcexchange.persistence.LaptopRepo;
 import java.util.List;
 
@@ -40,5 +42,12 @@ public class LaptopResource {
             return Response.ok().build();
         } else
             return Response.status(Status.NOT_FOUND).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createLaptop(Laptop laptop){
+       laptopService.addLaptop(laptop);
+       return Response.ok().build();
     }
 }
